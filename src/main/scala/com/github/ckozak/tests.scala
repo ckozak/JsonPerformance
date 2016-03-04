@@ -5,6 +5,9 @@ import java.util.UUID
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import com.fasterxml.jackson.module.scala.experimental.ScalaObjectMapper
+import org.json4s.DefaultFormats
+import spray.json.DefaultJsonProtocol
+
 
 import scala.util.Random
 
@@ -16,24 +19,15 @@ case class Example(
   date2: Long
 )
 
-case class ExampleSemiAuto(
-  id: String,
-  string: String,
-  double: Double,
-  date: Long,
-  date2: Long
-)
-
-object ExampleSemiAuto {
-  import io.circe._, io.circe.generic.semiauto._
-
-  implicit val decodeFoo: Decoder[ExampleSemiAuto] = deriveDecoder[ExampleSemiAuto]
-  implicit val encodeFoo: Encoder[ExampleSemiAuto] = deriveEncoder[ExampleSemiAuto]
-}
-
 object Utils {
   def randomId: String = UUID.randomUUID().toString
   def randomDouble = Random.nextDouble()
+
+  implicit val formats = DefaultFormats
+
+  object MyJsonProtocol extends DefaultJsonProtocol {
+    implicit val exampleFormat = jsonFormat5(Example)
+  }
 
   val objectMapper = {
     val objectMapper = new ObjectMapper with ScalaObjectMapper
@@ -41,6 +35,6 @@ object Utils {
     objectMapper
   }
 
-  def randomCampaignSpend =
+  def randomExample =
     Example(randomId, randomId, randomDouble, System.currentTimeMillis(), System.currentTimeMillis())
 }

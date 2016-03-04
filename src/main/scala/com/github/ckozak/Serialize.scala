@@ -6,7 +6,7 @@ import io.circe._, io.circe.generic.auto._, io.circe.syntax._
 
 @State(Scope.Benchmark)
 class SpendHolder {
-  val item = randomCampaignSpend
+  val item = randomExample
 }
 
 class Serialize {
