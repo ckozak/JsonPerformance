@@ -1,7 +1,6 @@
 package com.github.ckozak
 
 import java.util.UUID
-import java.util.concurrent.TimeUnit
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
@@ -32,41 +31,4 @@ object Utils {
 
   def createList(count: Int): List[String] =
     (1 to count map (_ => randomCampaignSpend) map objectMapper.writeValueAsString).toList
-}
-
-object JacksonTest extends App {
-
-  import Utils._
-
-  val list = createList(1000000)
-
-  // warmup
-  list.take(100).map(a => objectMapper.readValue[CampaignSpend](a))
-
-  1 to 5 foreach { _ =>
-    val start = System.nanoTime()
-    list.foreach { s =>
-      objectMapper.readValue[CampaignSpend](s)
-    }
-    val end = System.nanoTime()
-    println(s"${TimeUnit.MILLISECONDS.convert(end - start, TimeUnit.NANOSECONDS)}ms")
-  }
-}
-
-object CirceTest extends App  {
-  import Utils._
-  import io.circe._, io.circe.generic.auto._, io.circe.syntax._, io.circe.parser._
-
-  val list = createList(1000000)
-
-  list.take(100).map(a => decode[CampaignSpend](a))
-
-  1 to 5 foreach { _ =>
-    val start = System.nanoTime()
-    list.foreach { s =>
-      decode[CampaignSpend](s)
-    }
-    val end = System.nanoTime()
-    println(s"${TimeUnit.MILLISECONDS.convert(end - start, TimeUnit.NANOSECONDS)}ms")
-  }
 }
