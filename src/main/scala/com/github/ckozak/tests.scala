@@ -8,12 +8,12 @@ import com.fasterxml.jackson.module.scala.experimental.ScalaObjectMapper
 
 import scala.util.Random
 
-case class CampaignSpend(
-  campaignId: String,
-  targetId: String,
-  moneySpent: Double,
-  maxEventTs: Long,
-  messageTs: Long
+case class Example(
+  id: String,
+  string: String,
+  double: Double,
+  date: Long,
+  date2: Long
 )
 
 object Utils {
@@ -27,5 +27,5 @@ object Utils {
   }
 
   def randomCampaignSpend =
-    CampaignSpend(randomId, randomId, randomDouble, System.currentTimeMillis(), System.currentTimeMillis())
+    Example(randomId, randomId, randomDouble, System.currentTimeMillis(), System.currentTimeMillis())
 }

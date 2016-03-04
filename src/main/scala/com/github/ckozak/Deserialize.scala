@@ -13,18 +13,18 @@ class Deserialize {
 
   @Benchmark
   def jackson(state: JsonHolder): Unit = {
-    objectMapper.readValue[CampaignSpend](state.item)
+    objectMapper.readValue[Example](state.item)
   }
 
   @Benchmark
   def circeJackson(state: JsonHolder): Unit = {
     import io.circe.jackson._
-    decode[CampaignSpend](state.item)
+    decode[Example](state.item)
   }
 
   @Benchmark
   def circeJawn(state: JsonHolder): Unit = {
     import io.circe.jawn._
-    decode[CampaignSpend](state.item)
+    decode[Example](state.item)
   }
 }
