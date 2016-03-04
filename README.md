@@ -1,4 +1,4 @@
-# Small Jackson vs Circe benchmark
+# Small Scala JSON libraries benchmark
 
 De/serialization of a simple class from existing codebase.
 
