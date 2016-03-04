@@ -2,7 +2,6 @@ package com.github.ckozak
 
 import Utils._
 import org.openjdk.jmh.annotations.{Scope, State, Benchmark}
-import io.circe._, io.circe.generic.auto._, io.circe.syntax._
 
 @State(Scope.Benchmark)
 class JsonHolder {
@@ -17,14 +16,26 @@ class Deserialize {
   }
 
   @Benchmark
-  def circeJackson(state: JsonHolder): Unit = {
+  def circeJacksonSemiAuto(state: JsonHolder): Unit = {
     import io.circe.jackson._
+    decode[ExampleSemiAuto](state.item)
+  }
+
+  @Benchmark
+  def circeJackson(state: JsonHolder): Unit = {
+    import io.circe.generic.auto._, io.circe.jackson._
     decode[Example](state.item)
   }
 
   @Benchmark
   def circeJawn(state: JsonHolder): Unit = {
-    import io.circe.jawn._
+    import io.circe.generic.auto._, io.circe.jawn._
     decode[Example](state.item)
+  }
+
+  @Benchmark
+  def circeJawnSemiAuto(state: JsonHolder): Unit = {
+    import io.circe.jawn._
+    decode[ExampleSemiAuto](state.item)
   }
 }

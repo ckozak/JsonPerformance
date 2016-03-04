@@ -16,6 +16,21 @@ case class Example(
   date2: Long
 )
 
+case class ExampleSemiAuto(
+  id: String,
+  string: String,
+  double: Double,
+  date: Long,
+  date2: Long
+)
+
+object ExampleSemiAuto {
+  import io.circe._, io.circe.generic.semiauto._
+
+  implicit val decodeFoo: Decoder[ExampleSemiAuto] = deriveDecoder[ExampleSemiAuto]
+  implicit val encodeFoo: Encoder[ExampleSemiAuto] = deriveEncoder[ExampleSemiAuto]
+}
+
 object Utils {
   def randomId: String = UUID.randomUUID().toString
   def randomDouble = Random.nextDouble()
