@@ -104,10 +104,6 @@ De/serialization of a simple class from existing codebase.
 
 ```
 >  jmh:run -i 20 -wi 20 -f1 -t1 com.github.ckozak.Serialize
-[info] Compiling 3 Scala sources to /Users/constantine.kozak/Development/chartboost/JsonBenchmark/target/scala-2.11/classes...
-Processing 54 classes from /Users/constantine.kozak/Development/chartboost/JsonBenchmark/target/scala-2.11/classes with "reflection" generator
-Writing out Java source to /Users/constantine.kozak/Development/chartboost/JsonBenchmark/target/scala-2.11/src_managed/jmh and resources to /Users/constantine.kozak/Development/chartboost/JsonBenchmark/target/scala-2.11/resource_managed/jmh
-[info] Compiling 25 Java sources to /Users/constantine.kozak/Development/chartboost/JsonBenchmark/target/scala-2.11/jmh-classes...
 [info] Running org.openjdk.jmh.Main -i 20 -wi 20 -f1 -t1 com.github.ckozak.Serialize
 [info] # JMH 1.11.3 (released 49 days ago)
 [info] # VM version: JDK 1.8.0_65, VM 25.65-b01
