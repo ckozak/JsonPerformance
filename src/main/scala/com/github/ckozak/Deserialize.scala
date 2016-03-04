@@ -1,30 +1,30 @@
 package com.github.ckozak
 
 import Utils._
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.module.scala.DefaultScalaModule
-import com.fasterxml.jackson.module.scala.experimental.ScalaObjectMapper
 import org.openjdk.jmh.annotations.{Scope, State, Benchmark}
-import io.circe._, io.circe.generic.auto._, io.circe.syntax._, io.circe.jackson._
+import io.circe._, io.circe.generic.auto._, io.circe.syntax._
 
 @State(Scope.Benchmark)
 class ListHolder {
-  val list = createList(1000000)
+  val item = objectMapper.writeValueAsString(randomCampaignSpend)
 }
 
 class Deserialize {
 
   @Benchmark
   def jackson(state: ListHolder): Unit = {
-    state.list map { s =>
-      objectMapper.readValue[CampaignSpend](s)
-    }
+    objectMapper.readValue[CampaignSpend](state.item)
   }
 
   @Benchmark
-  def circe(state: ListHolder): Unit = {
-    state.list map { s =>
-      decode[CampaignSpend](s)
-    }
+  def circeJackson(state: ListHolder): Unit = {
+    import io.circe.jackson._
+    decode[CampaignSpend](state.item)
+  }
+
+  @Benchmark
+  def circeJawn(state: ListHolder): Unit = {
+    import io.circe.jawn._
+    decode[CampaignSpend](state.item)
   }
 }

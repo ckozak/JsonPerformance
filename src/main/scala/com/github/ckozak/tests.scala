@@ -28,7 +28,4 @@ object Utils {
 
   def randomCampaignSpend =
     CampaignSpend(randomId, randomId, randomDouble, System.currentTimeMillis(), System.currentTimeMillis())
-
-  def createList(count: Int): List[String] =
-    (1 to count map (_ => randomCampaignSpend) map objectMapper.writeValueAsString).toList
 }
