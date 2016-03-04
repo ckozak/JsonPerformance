@@ -1,8 +1,8 @@
 package com.github.ckozak
 
 import Utils._
-import org.json4s.DefaultFormats
 import org.openjdk.jmh.annotations.{Scope, State, Benchmark}
+import argonaut._, Argonaut._
 
 @State(Scope.Benchmark)
 class JsonHolder {
@@ -43,5 +43,11 @@ class Deserialize {
     import spray.json._
     import Utils.MyJsonProtocol._
     state.item.parseJson.convertTo[Example]
+  }
+
+  @Benchmark
+  def argonaut(state: JsonHolder): Unit = {
+    import ArgonautUtils._
+    state.item.decodeOption[Example]
   }
 }

@@ -38,3 +38,10 @@ object Utils {
   def randomExample =
     Example(randomId, randomId, randomDouble, System.currentTimeMillis(), System.currentTimeMillis())
 }
+
+object ArgonautUtils {
+  import argonaut._, Argonaut._, Shapeless._
+
+  implicit val encode = EncodeJson.of[Example]
+  implicit val decode = DecodeJson.of[Example]
+}

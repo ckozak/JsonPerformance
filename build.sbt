@@ -23,6 +23,11 @@ libraryDependencies ++= Seq(
 
 libraryDependencies += "io.spray" %%  "spray-json" % "1.3.2"
 
+libraryDependencies ++= Seq(
+  "io.argonaut" %% "argonaut" % "6.1",
+  "com.github.alexarchambault" %% "argonaut-shapeless_6.1" % "1.0.0-RC1"
+)
+
 
 
 enablePlugins(JmhPlugin)
