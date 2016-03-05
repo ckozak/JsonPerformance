@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import com.fasterxml.jackson.module.scala.experimental.ScalaObjectMapper
 import org.json4s.DefaultFormats
+
 import spray.json.DefaultJsonProtocol
 
 
@@ -23,20 +24,31 @@ object Utils {
   def randomId: String = UUID.randomUUID().toString
   def randomDouble = Random.nextDouble()
 
-  implicit val formats = DefaultFormats
+  def randomExample =
+    Example(randomId, randomId, randomDouble, System.currentTimeMillis(), System.currentTimeMillis())
+}
 
+object SprayJsonUtils {
   object MyJsonProtocol extends DefaultJsonProtocol {
     implicit val exampleFormat = jsonFormat5(Example)
   }
+}
 
+object JacksonUtils {
   val objectMapper = {
     val objectMapper = new ObjectMapper with ScalaObjectMapper
     objectMapper.registerModule(DefaultScalaModule)
     objectMapper
   }
+}
 
-  def randomExample =
-    Example(randomId, randomId, randomDouble, System.currentTimeMillis(), System.currentTimeMillis())
+object Json4sUtils {
+  implicit val formats = DefaultFormats
+}
+
+object PlayUtils {
+  import play.api.libs.json._
+  implicit val modelFormat = Json.format[Example]
 }
 
 object ArgonautUtils {

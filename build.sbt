@@ -16,12 +16,11 @@ libraryDependencies ++= Seq(
   "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.7.2"
 )
 
-libraryDependencies ++= Seq(
-  "org.json4s" %% "json4s-jackson" % "3.3.0",
-  "org.json4s" %% "json4s-native" % "3.3.0"
-)
+libraryDependencies += "org.json4s" %% "json4s-jackson" % "3.3.0"
 
 libraryDependencies += "io.spray" %%  "spray-json" % "1.3.2"
+
+libraryDependencies += "com.typesafe.play" % "play-json_2.11" % "2.5.0"
 
 libraryDependencies ++= Seq(
   "io.argonaut" %% "argonaut" % "6.1",
