@@ -56,4 +56,11 @@ class Serialize {
     import PlayUtils._
     Json.toJson(state.item)
   }
+
+  @Benchmark
+  def liftweb(state: SpendHolder): Unit = {
+    import LiftwebUtils._
+    import net.liftweb.json.Serialization.write
+    write(state.item)
+  }
 }

@@ -57,4 +57,11 @@ class Deserialize {
     import PlayUtils._
     Json.fromJson[Example](Json.parse(state.item))
   }
+
+  @Benchmark
+  def liftweb(state: JsonHolder): Unit = {
+    import LiftwebUtils._
+    import net.liftweb.json.Serialization.read
+    read[Example](state.item)
+  }
 }

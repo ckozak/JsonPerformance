@@ -34,6 +34,12 @@ object SprayJsonUtils {
   }
 }
 
+object LiftwebUtils {
+  import net.liftweb.json._
+
+  implicit val formats = Serialization.formats(NoTypeHints)
+}
+
 object JacksonUtils {
   val objectMapper = {
     val objectMapper = new ObjectMapper with ScalaObjectMapper

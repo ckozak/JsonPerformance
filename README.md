@@ -6,32 +6,34 @@ De/serialization of a simple class from existing codebase.
 
 ```
 >  jmh:run -i 20 -wi 20 -f1 -t1 com.github.ckozak.Deserialize
-[info] # Run complete. Total time: 00:04:46
+[info] # Run complete. Total time: 00:05:27
 [info]
-[info] Benchmark                   Mode  Cnt       Score       Error  Units
-[info] Deserialize.argonaut       thrpt   20  312771.240 ± 10857.879  ops/s
-[info] Deserialize.circeJackson   thrpt   20  280691.766 ±  6436.045  ops/s
-[info] Deserialize.circeJawn      thrpt   20  290433.103 ± 11085.824  ops/s
-[info] Deserialize.jackson        thrpt   20  939221.283 ± 31839.331  ops/s
-[info] Deserialize.json4sJackson  thrpt   20  344521.266 ±  7877.949  ops/s
-[info] Deserialize.json4sNative   thrpt   20  318550.156 ±  5005.312  ops/s
-[info] Deserialize.sprayJson      thrpt   20  390375.674 ±  8316.547  ops/s
-[success] Total time: 287 s, completed Mar 4, 2016 2:20:20 PM
+[info] Benchmark                   Mode  Cnt        Score       Error  Units
+[info] Deserialize.argonaut       thrpt   20   306173.271 ±  6740.448  ops/s
+[info] Deserialize.circeJackson   thrpt   20   266859.347 ±  8053.033  ops/s
+[info] Deserialize.circeJawn      thrpt   20   257510.955 ±  3433.131  ops/s
+[info] Deserialize.jackson        thrpt   20  1006975.456 ± 21085.283  ops/s
+[info] Deserialize.json4sJackson  thrpt   20   345123.863 ±  3276.832  ops/s
+[info] Deserialize.liftweb        thrpt   20   330420.094 ±  3676.476  ops/s
+[info] Deserialize.playJson       thrpt   20   277163.585 ±  3504.662  ops/s
+[info] Deserialize.sprayJson      thrpt   20   434971.127 ± 23959.247  ops/s
+[success] Total time: 331 s, completed Mar 4, 2016 5:36:48 PM
 ```
 
 ## Serialization
 
 ```
 >  jmh:run -i 20 -wi 20 -f1 -t1 com.github.ckozak.Serialize
-[info] # Run complete. Total time: 00:04:45
+[info] # Run complete. Total time: 00:05:25
 [info]
 [info] Benchmark                 Mode  Cnt        Score       Error  Units
-[info] Serialize.argonaut       thrpt   20   321210.896 ± 10926.567  ops/s
-[info] Serialize.circeJackson   thrpt   20   342238.032 ± 15188.653  ops/s
-[info] Serialize.circeJawn      thrpt   20   331295.903 ± 10299.507  ops/s
-[info] Serialize.jackson        thrpt   20  1479139.389 ± 52437.687  ops/s
-[info] Serialize.json4sJackson  thrpt   20   439554.353 ± 12789.326  ops/s
-[info] Serialize.json4sNative   thrpt   20   300999.804 ±  8148.935  ops/s
-[info] Serialize.sprayJson      thrpt   20   656806.482 ± 10432.395  ops/s
-[success] Total time: 289 s, completed Mar 4, 2016 2:13:53 PM
+[info] Serialize.argonautJson   thrpt   20   307396.685 ±  3732.778  ops/s
+[info] Serialize.circeJackson   thrpt   20   339158.332 ±  3876.054  ops/s
+[info] Serialize.circeJawn      thrpt   20   352781.205 ±  9430.501  ops/s
+[info] Serialize.jackson        thrpt   20  1501204.013 ± 29504.360  ops/s
+[info] Serialize.json4sJackson  thrpt   20   427123.035 ±  7935.249  ops/s
+[info] Serialize.liftweb        thrpt   20   402390.125 ±  3612.323  ops/s
+[info] Serialize.playJson       thrpt   20   210975.406 ±  4420.848  ops/s
+[info] Serialize.sprayJson      thrpt   20   565037.251 ±  8730.665  ops/s
+[success] Total time: 326 s, completed Mar 4, 2016 5:43:34 PM
 ```
