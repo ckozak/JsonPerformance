@@ -17,15 +17,16 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies += "org.json4s" %% "json4s-jackson" % "3.3.0"
-libraryDependencies += "io.spray" %%  "spray-json" % "1.3.2"
-libraryDependencies += "net.liftweb" % "lift-json_2.11" % "3.0-M8"
-libraryDependencies += "com.typesafe.play" % "play-json_2.11" % "2.5.0"
+libraryDependencies += "io.spray" %% "spray-json" % "1.3.2"
+libraryDependencies += "net.liftweb" %% "lift-json" % "3.0-M8"
+libraryDependencies += "com.typesafe.play" %% "play-json" % "2.5.0"
+libraryDependencies += "com.lihaoyi" %% "upickle" % "0.4.0"
+
+libraryDependencies += "com.github.alexarchambault" %% "scalacheck-shapeless_1.13" % "1.1.0-RC1"
 
 libraryDependencies ++= Seq(
   "io.argonaut" %% "argonaut" % "6.1",
   "com.github.alexarchambault" %% "argonaut-shapeless_6.1" % "1.0.0-RC1"
 )
-
-
 
 enablePlugins(JmhPlugin)

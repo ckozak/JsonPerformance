@@ -1,14 +1,16 @@
 package com.github.ckozak
 
-import Utils._
-import org.openjdk.jmh.annotations.{Scope, State, Benchmark}
+import org.openjdk.jmh.annotations.{ Scope, State, Benchmark }
 import argonaut._, Argonaut._
+
+import org.scalacheck.Shapeless._
+import org.scalacheck._
 
 @State(Scope.Benchmark)
 class JsonHolder {
   val item = {
     import JacksonUtils._
-    objectMapper.writeValueAsString(randomExample)
+    objectMapper.writeValueAsString(Arbitrary.arbitrary[Example].sample.get)
   }
 }
 
