@@ -1,19 +1,108 @@
 package com.github.ckozak
 
-import org.openjdk.jmh.annotations.{Benchmark, Scope, State}
+import org.openjdk.jmh.annotations.{ Benchmark, Scope, State }
 import argonaut._
 import Argonaut._
 import com.github.ckozak.models.Apps
 import org.scalacheck.Shapeless._
 import org.scalacheck._
+import upickle.default._
 
 @State(Scope.Benchmark)
 class AppsHolder {
-  val item = {
-    import JacksonUtils._
-    implicitly[Arbitrary[Apps]]
-    objectMapper.writeValueAsString(Arbitrary.arbitrary[Apps].sample.get)
-  }
+  val item = """{
+                 "id": "ჟ",
+                 "company": "ꭋ櫭呗ࡖ㟇",
+                 "name":"name",
+                 "signature": "ძ긞⌍狂៨",
+                 "nonTrackable": true,
+                 "blockS2S": false,
+                 "adminExtras": {
+                   "adminAdvertiserDisabled": true,
+                   "adminPublisherDisabled": true,
+                   "adminCpiDisabled": true,
+                   "appDefaultSettings": {
+                   	"maxAdsDaily": 1,
+                   	"maxAdsHourly": 2
+               	    },
+                   "buyoutNeverShowOverride": false
+                 },
+                 "url": "㤑",
+                 "nonGame": true,
+                 "appstore": {
+                   "categories": [
+                     "咋꺊"
+                   ],
+                   "contentRating": [
+                     "漩着",
+                     "ퟅ뤝"
+                   ],
+                   "socialMetaData": {
+                     "starRating": 9.7
+                   }
+                 },
+                 "moreAppsSettings": {
+                   "caching": true,
+                   "showAdvertising": false,
+                   "headerBackgroundColor": "sdfsdf",
+                   "headerTextColor": "sfasdf",
+                   "headerText": "Sdfa",
+                   "moreAppsCustomAssets": ["jksdjhf", "si"],
+                   "appDescription": "ksdjfhlkjsj"
+                 },
+                 "testingExtras": {
+                   "testing": true,
+                   "testModeEnd": 8
+                 },
+                 "hasCompletedViewCallback": false,
+                 "hasInstallCallback": false,
+                 "itunesId": "kjsdfn",
+                 "rawExtras": {
+                   "moreButtonText": "Ͱ",
+                   "moreFeaturedText": "sadf"
+                 },
+                 "deepLink": "휷",
+                 "videoSettings": {
+                   "prerollPopup": false,
+                   "animation": 3,
+                   "reward": 8,
+                   "videoIcon": "jksdlfja;s",
+                   "replayUrl": "sajkhdf",
+                   "ux": {
+                     "confirmation": {
+                     		"color": "red",
+                     		"text":"sadf"
+                     	},
+                     "videoControlsTogglable": true,
+                     "postVideoIconEnabled": true,
+                     "videoControlsBackground": {
+                       "color": "saf",
+                       "borderColor": "qrqwe"
+                     },
+                     "videoProgressTimerEnabled": false,
+                     "postVideoRewardToaster": {
+                     	"text": "2etwe",
+                     	"enabled": true,
+                     	"position": "left"
+                     	},
+                     "cancelPopup": {
+                     	"cancel": "sdjlf",
+                     	"text": "sdjfk",
+                     	"confirm": "aisdojf",
+                     	"title": "sdfljak"
+                     }
+                   },
+                   "videoClickButtonEnabled": true,
+                   "videoClickButton": "asdfhkjlk",
+                   "postVideoButton": "jaskdhf",
+                   "fullscreen": true,
+                   "videoConfirmationButton": "sdkfl"
+                 },
+                 "activated": false,
+                 "selectedForApps": [
+                   "癳"
+                 ]
+               }"""
 }
 
 class DeserializeApp {
@@ -66,6 +155,11 @@ class DeserializeApp {
   def liftweb(state: AppsHolder): Unit = {
     import LiftwebUtils._
     import net.liftweb.json.Serialization.read
+    read[Apps](state.item)
+  }
+
+  @Benchmark
+  def upickle(state: AppsHolder): Unit = {
     read[Apps](state.item)
   }
 }

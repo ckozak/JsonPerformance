@@ -6,12 +6,17 @@ import argonaut._, Argonaut._
 import org.scalacheck.Shapeless._
 import org.scalacheck._
 
+import upickle.default._
+
 @State(Scope.Benchmark)
 class JsonHolder {
-  val item = {
-    import JacksonUtils._
-    objectMapper.writeValueAsString(Arbitrary.arbitrary[Example].sample.get)
-  }
+  val item = """{
+               	"id": "sdfhls",
+               	"string": "khojkm",
+               	"double": 3.2,
+               	"date": 345678987654,
+               	"date2": 4567890098765
+               }"""
 }
 
 class Deserialize {
@@ -64,6 +69,11 @@ class Deserialize {
   def liftweb(state: JsonHolder): Unit = {
     import LiftwebUtils._
     import net.liftweb.json.Serialization.read
+    read[Example](state.item)
+  }
+
+  @Benchmark
+  def upickle(state: JsonHolder): Unit = {
     read[Example](state.item)
   }
 }

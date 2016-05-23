@@ -46,10 +46,6 @@ object LiftwebUtils {
   implicit val formats = Serialization.formats(NoTypeHints)
 }
 
-object UPickleUtils {
-  import upickle.default._
-}
-
 object JacksonUtils {
   val objectMapper = {
     val objectMapper = new ObjectMapper with ScalaObjectMapper
@@ -87,8 +83,6 @@ object ArgonautUtils {
 
   implicit val encode = EncodeJson.of[Example]
   implicit val decode = DecodeJson.of[Example]
-
-
 
   implicit val encode3 = EncodeJson.of[AppDefaultSettings]
   implicit val decode3 = DecodeJson.of[AppDefaultSettings]

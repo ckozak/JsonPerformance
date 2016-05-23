@@ -1,14 +1,18 @@
 package com.github.ckozak
 
 import com.github.ckozak.models.Device
-import org.openjdk.jmh.annotations.{Benchmark, Scope, State}
+import org.openjdk.jmh.annotations.{ Benchmark, Scope, State }
 import upickle.default._
 import org.scalacheck.Shapeless._
 import org.scalacheck._
 
 @State(Scope.Benchmark)
 class DeviceHolder {
-  val item = Arbitrary.arbitrary[Device].sample.get
+  val item = Device(
+    deviceId = "SLFH;SDLFJAS;FJASDLFKJSADFJKDFN",
+    lists = Seq("lsdfjsd", "sdf", "sdfdsfdsfdsf", "sdflsdfj", "sdfhlsdjf", "skdfsdlfja", "sdfhalksjf", "skfhslkdjf"),
+    moreLists = Seq("ksdjfksdf", "sdhfalsdf", "sdfla")
+  )
 }
 
 class SerializeDevice {

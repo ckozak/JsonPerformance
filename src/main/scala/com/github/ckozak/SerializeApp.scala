@@ -1,7 +1,7 @@
 package com.github.ckozak
 
 import com.github.ckozak.models.Apps
-import org.openjdk.jmh.annotations.{Benchmark, Scope, State}
+import org.openjdk.jmh.annotations.{ Benchmark, Scope, State }
 import upickle.default._
 
 import org.scalacheck.Shapeless._
