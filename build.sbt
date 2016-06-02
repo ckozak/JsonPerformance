@@ -29,4 +29,6 @@ libraryDependencies ++= Seq(
   "com.github.alexarchambault" %% "argonaut-shapeless_6.1" % "1.0.0-RC2"
 )
 
+libraryDependencies += "commons-validator" % "commons-validator" % "1.5.1"
+
 enablePlugins(JmhPlugin)

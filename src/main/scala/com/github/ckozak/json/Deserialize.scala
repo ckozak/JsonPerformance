@@ -2,7 +2,7 @@ package com.github.ckozak.json
 
 import argonaut.Argonaut._
 import com.github.ckozak.json.models.Example
-import org.openjdk.jmh.annotations.{Benchmark, Scope, State}
+import org.openjdk.jmh.annotations.{ Benchmark, Scope, State }
 import upickle.default._
 
 @State(Scope.Benchmark)
