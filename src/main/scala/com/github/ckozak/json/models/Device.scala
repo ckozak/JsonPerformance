@@ -1,4 +1,4 @@
-package com.github.ckozak.models
+package com.github.ckozak.json.models
 
 case class Device(
   deviceId: String,

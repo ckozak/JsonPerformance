@@ -1,11 +1,8 @@
-package com.github.ckozak
+package com.github.ckozak.json
 
-import org.openjdk.jmh.annotations.{ Benchmark, Scope, State }
-import argonaut._
-import Argonaut._
-import com.github.ckozak.models.{ Apps, Device }
-import org.scalacheck.Shapeless._
-import org.scalacheck._
+import argonaut.Argonaut._
+import com.github.ckozak.json.models.Device
+import org.openjdk.jmh.annotations.{Benchmark, Scope, State}
 import upickle.default._
 
 @State(Scope.Benchmark)
@@ -63,11 +60,11 @@ class DeserializeDevice {
     state.item.parseJson.convertTo[Device]
   }
 
-  @Benchmark
+  /*@Benchmark
   def argonaut(state: DevicesHolder): Unit = {
     import ArgonautUtils._
     state.item.decodeOption[Device]
-  }
+  }*/
 
   @Benchmark
   def playJson(state: DevicesHolder): Unit = {

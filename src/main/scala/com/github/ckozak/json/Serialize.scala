@@ -1,6 +1,8 @@
-package com.github.ckozak
+package com.github.ckozak.json
 
-import org.openjdk.jmh.annotations.{ Scope, State, Benchmark }
+import com.github.ckozak.json.models.Example
+import org.openjdk.jmh.annotations.{Benchmark, Scope, State}
+import org.scalacheck._
 import upickle.default._
 
 import org.scalacheck.Shapeless._
@@ -44,14 +46,14 @@ class Serialize {
     org.json4s.jackson.Serialization.write(state.item)
   }
 
-  @Benchmark
+  /*@Benchmark
   def argonautJson(state: SpendHolder): Unit = {
 
     import ArgonautUtils._
     import argonaut.Argonaut._
 
     state.item.asJson.nospaces
-  }
+  }*/
 
   @Benchmark
   def playJson(state: SpendHolder): Unit = {

@@ -1,11 +1,8 @@
-package com.github.ckozak
+package com.github.ckozak.json
 
-import org.openjdk.jmh.annotations.{ Benchmark, Scope, State }
-import argonaut._
-import Argonaut._
-import com.github.ckozak.models.Apps
-import org.scalacheck.Shapeless._
-import org.scalacheck._
+import argonaut.Argonaut._
+import com.github.ckozak.json.models.Apps
+import org.openjdk.jmh.annotations.{Benchmark, Scope, State}
 import upickle.default._
 
 @State(Scope.Benchmark)
@@ -138,11 +135,11 @@ class DeserializeApp {
     state.item.parseJson.convertTo[Apps]
   }
 
-  @Benchmark
+  /*@Benchmark
   def argonaut(state: AppsHolder): Unit = {
     import ArgonautUtils._
     state.item.decodeOption[Apps]
-  }
+  }*/
 
   @Benchmark
   def playJson(state: AppsHolder): Unit = {
