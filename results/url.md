@@ -1,8 +1,4 @@
-# Small Scala JSON libraries benchmark
-
-De/serialization of a simple class from existing codebase.
-
-## Deserialization
+# URL validation benchmark
 
 ```
 >  jmh:run -i 20 -wi 20 -f1 -t1 com.github.ckozak.url.UrlValidator
