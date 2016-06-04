@@ -3,7 +3,7 @@ package com.github.ckozak.url
 import java.net.URL
 
 import org.apache.commons.validator.routines.UrlValidator
-import org.openjdk.jmh.annotations.{Benchmark, Scope, State}
+import org.openjdk.jmh.annotations.{ Benchmark, Scope, State }
 
 import scala.util.Try
 
