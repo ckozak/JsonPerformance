@@ -22,6 +22,8 @@ libraryDependencies += "net.liftweb" %% "lift-json" % "3.0-M8"
 libraryDependencies += "com.typesafe.play" %% "play-json" % "2.5.3"
 libraryDependencies += "com.lihaoyi" %% "upickle" % "0.4.0"
 
+libraryDependencies += "org.spire-math" %% "spire" % "0.13.0"
+
 libraryDependencies += "com.github.alexarchambault" %% "scalacheck-shapeless_1.13" % "1.1.0-RC3"
 
 libraryDependencies ++= Seq(
